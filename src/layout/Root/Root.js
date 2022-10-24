@@ -7,9 +7,9 @@ const Root = () => {
     return (
         <div>
             <Header></Header>
-            <div className='grid grid-cols-3'>
+            <div className='grid grid-cols-4'>
                 <div className="col-span-1"><LeftNav></LeftNav></div>
-                <div className="col-span-2"><Outlet></Outlet></div>
+                <div className="col-span-3"><Outlet></Outlet></div>
             </div>
         </div>
     );
