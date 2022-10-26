@@ -1,9 +1,14 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
+import '../Home.css'
+const picture = new URL("/src/assets/home.jpg", import.meta.url)
 const Home = () => {
     return (
-        <div>
-            <h1>this is home Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime vero voluptates animi temporibus molestias id laborum iste officia illum eveniet.</h1>
+        <div className='main-container flex justify-center items-center'>
+            <div className='img-section'>
+                <h1 className='font-bold text-4xl text-orange-700'>Welcome To ProLearners Comunity!</h1>
+                <Link to="/courses"><button className='btn btn-secondary mt-10 px-10'>See Courses</button></Link>
+            </div>
         </div>
     );
 };
