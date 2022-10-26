@@ -6,7 +6,7 @@ const Header = () => {
         <div className='mb-5'>
             <div className="navbar bg-pink-100">
                 <div className="flex-1 gap-3 text-xl font-bold">
-                    <Link to='/' className="bg-gray-200 p-2 rounded-md normal-case text-xl">daisyUI</Link>
+                    <Link to='/' className="bg-gray-200 p-2 rounded-md normal-case text-xl">ProLearners</Link>
                     <Link to='/courses'>Courses</Link>
                     <Link  to='/faq'>FAQ</Link>
                     <Link to='blog'>Blog</Link>

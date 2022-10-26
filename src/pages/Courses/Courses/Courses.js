@@ -4,7 +4,7 @@ import SingleCard from '../SignleCard/SingleCard';
 
 const Courses = () => {
     const courses = useLoaderData();
-    console.log(courses);
+    // console.log(courses);
     return (
         <div className='grid grid-cols-2 gap-5 w-full mx-auto'>
             {

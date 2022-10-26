@@ -13,7 +13,7 @@ const LeftNav = () => {
     return (
         <div>
             {
-                courses.map(course => <div key={course.id}>
+                courses.map(course => <div key={course.id} className='border m-5 py-2 rounded-lg font-bold'>
                     <Link to={`courses/${course.id}`}>{course.name}</Link>
                 </div>)
             }
