@@ -76,9 +76,6 @@ const Register = () => {
                                 </label>
                                 <input type="password" placeholder="password" className="input input-bordered" value={userInfo.password} onChange={handlePassword} required />
                                 <label className="label">
-                                    <Link href="#" className="label-text-alt link link-hover">Forgot password?</Link>
-                                </label>
-                                <label className="label">
                                     <span>Already have an account <Link to='/login' className='underline underline-offset-4'>log in</Link></span>
                                 </label>
                             </div>

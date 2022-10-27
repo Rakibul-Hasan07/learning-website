@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
 import Switch from "react-switch";
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
+import './Header.css'
 
 const picture = new URL("../../../assets/favicon1.jpg", import.meta.url)
 const Header = () => {
@@ -25,21 +26,23 @@ const Header = () => {
                         <XMarkIcon></XMarkIcon>
                 }
             </div>
-            <div className={`navbar md:flex justify-between w-full bg-purple-200 ${open? "hidden" : "block"}`}>
+            <div className={`navbar md:flex justify-between w-full bg-purple-200 ${open ? "hidden" : "block"}`}>
 
                 <div className="flex flex-col md:flex-row gap-3 text-xl font-bold">
                     <img className='rounded-lg h-10' src={picture} alt="" />
-                    <Link to='/' className="bg-gray-200 p-2 rounded-md normal-case text-xl">ProLearners</Link>
-                    <Link to='/courses'>Courses</Link>
-                    <Link to='/faq'>FAQ</Link>
-                    <Link to='blog'>Blog</Link>
+                    <NavLink to='/home' className={`bg-gray-200 p-2 rounded-md normal-case text-xl ${({ isActive }) => {
+                        return isActive ? "active" : undefined;
+                    }}`}>ProLearners</NavLink>
+                    <NavLink to='/courses'>Courses</NavLink>
+                    <NavLink to='/faq'>FAQ</NavLink>
+                    <NavLink to='blog'>Blog</NavLink>
                 </div>
                 <div className="flex flex-col md:flex-row gap-3 text-xl font-bold">
                     {
-                        user?.uid ? <Link onClick={handleLogout}>LogOut</Link> :
+                        user?.uid ? <NavLink  onClick={handleLogout}>LogOut</NavLink> :
                             <>
-                                <Link to='/login'>Login</Link>
-                                <Link to='/register'>Register</Link>
+                                <NavLink to='/login'>Login</NavLink>
+                                <NavLink to='/register'>Register</NavLink>
                             </>
                     }
 

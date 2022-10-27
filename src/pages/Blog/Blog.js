@@ -3,7 +3,6 @@ import { useLoaderData } from 'react-router-dom';
 
 const Blog = () => {
     const blogData = useLoaderData();
-    console.log(blogData);
     return (
         <div className='grid lg:grid-cols-2 gap-5 bg-slate-300'>
             {

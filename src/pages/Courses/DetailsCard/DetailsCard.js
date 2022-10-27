@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 
