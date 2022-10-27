@@ -1,10 +1,13 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import { Result } from 'postcss';
 import React, { useContext, useState } from 'react';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Login = () => {
-    const { userLogin } = useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider()
+    const { userLogin, googleSignIn } = useContext(AuthContext);
     const [loginInfo, setLoginInfo] = useState({ email: "", password: "" })
     const handleEmail = (event) => {
         setLoginInfo({ ...loginInfo, email: event.target.value })
@@ -23,6 +26,17 @@ const Login = () => {
             .catch(error => {
                 console.log(error.message);
             })
+    }
+
+    const handleGoogleSignin = () => {
+        googleSignIn(googleProvider)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error=>{
+            console.log(error.message);
+        })
     }
     return (
         <div>
@@ -51,8 +65,14 @@ const Login = () => {
                                     <span>Are you new here <Link to='/register' className='underline underline-offset-4'>register</Link></span>
                                 </label>
                             </div>
-                            <div className="form-control mt-6">
-                                <button className="btn btn-primary">Login</button>
+                            <div className="form-control mt-4">
+                                <button className="btn btn-success">Login</button>
+                            </div>
+                            <div className="form-control mt-4">
+                                <button onClick={handleGoogleSignin} className="btn btn-outline btn-secondary"><FaGoogle className='text-black m-2'></FaGoogle> Google login</button>
+                            </div>
+                            <div className="form-control mt-4">
+                                <button className="btn btn-outline btn-secondary"><FaGithub className='text-black m-2'></FaGithub> GitHub Login</button>
                             </div>
                         </form>
                     </div>

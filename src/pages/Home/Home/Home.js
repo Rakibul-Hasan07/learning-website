@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../Home.css'
-const picture = new URL("/src/assets/home.jpg", import.meta.url)
+import './Home.css'
 const Home = () => {
     return (
         <div className='main-container flex justify-center items-center'>
