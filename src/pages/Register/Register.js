@@ -22,7 +22,7 @@ const Register = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(userInfo.name, userInfo.url, userInfo.email, userInfo.password);
+        // console.log(userInfo.name, userInfo.url, userInfo.email, userInfo.password);
         createUser(userInfo.email, userInfo.password)
         .then(result =>{
             const user = result.user;
@@ -31,7 +31,7 @@ const Register = () => {
             .catch(error=>{
                 console.log(error.message);
             })
-            console.log(user);
+            // console.log(user);
         })
         .catch(error=>{
             setError(error.message)
@@ -73,11 +73,11 @@ const Register = () => {
                                     <Link href="#" className="label-text-alt link link-hover">Forgot password?</Link>
                                 </label>
                                 <label className="label">
-                                    <span>Already have an account <Link to='/login'>log in</Link></span>
+                                    <span>Already have an account <Link to='/login' className='underline underline-offset-4'>log in</Link></span>
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary">Login</button>
+                                <button className="btn btn-primary">Register</button>
                             </div>
                         </form>
                     </div>

@@ -22,12 +22,17 @@ const AuthProvider = ({ children }) => {
             unsbuscribe();
         }
     }, [])
+    
+    //login
+    const userLogin = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password)
+    }
 
     //update profile
     const userUpdateProfile = (name, url) => {
         return updateProfile(auth.currentUser, {displayName:name, photoURL:url})
     }
-    const authInfo = { user, createUser, userUpdateProfile }
+    const authInfo = { user, createUser, userUpdateProfile, userLogin }
     return (
         <AuthContext.Provider value={authInfo}>
             {children}
