@@ -10,6 +10,7 @@ const Login = () => {
     const githubProvider = new GithubAuthProvider();
     const { userLogin, googleSignIn, githubSIgnIn } = useContext(AuthContext);
     const [loginInfo, setLoginInfo] = useState({ email: "", password: "" })
+    const [errorInfo, setErrorInfo] = useState({loginError:"", googleError:"", gitHubError:""})
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -25,11 +26,13 @@ const Login = () => {
         userLogin(loginInfo.email, loginInfo.password)
             .then(result => {
                 const user = result.user;
+                setErrorInfo("")
                 navigate(from, {replace: true});
                 console.log(user);
             })
             .catch(error => {
                 console.log(error.message);
+                setErrorInfo({...errorInfo, loginError:error.message})
             })
     }
 
@@ -37,10 +40,12 @@ const Login = () => {
         googleSignIn(googleProvider)
         .then(result => {
             const user = result.user;
+            setErrorInfo("")
             console.log(user);
         })
         .catch(error=>{
             console.log(error.message);
+            setErrorInfo({...errorInfo, googleError:error.message})
         })
     }
 
@@ -48,10 +53,12 @@ const Login = () => {
         githubSIgnIn(githubProvider)
         .then(result=>{
             const user = result.user;
+            setErrorInfo("")
             console.log(user);
         })
         .catch(error=>{
             console.log(error.message);
+            setErrorInfo({...errorInfo, gitHubError:error.message})
         })
     }
     return (
@@ -64,6 +71,9 @@ const Login = () => {
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit} className="card-body">
                             <div className="form-control">
+                                <p className='text-red-500'>{errorInfo.loginError}</p>
+                                <p className='text-red-500'>{errorInfo.googleError}</p>
+                                <p className='text-red-500'>{errorInfo.gitHubError}</p>
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>

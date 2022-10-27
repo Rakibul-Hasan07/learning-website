@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Register = () => {
-    const {createUser, userUpdateProfile} = useContext(AuthContext);
+    const { createUser, userUpdateProfile } = useContext(AuthContext);
     const [userInfo, setUserInfo] = useState({ name: "", url: "", email: "", password: "" })
-    const[error, setError] = useState('')
+    const [errorInfo, setErrorInfo] = useState({ registerError: "", updateProfile: "" })
 
     const handleName = (event) => {
         setUserInfo({ ...userInfo, name: event.target.value })
@@ -24,18 +24,22 @@ const Register = () => {
         event.preventDefault();
         // console.log(userInfo.name, userInfo.url, userInfo.email, userInfo.password);
         createUser(userInfo.email, userInfo.password)
-        .then(result =>{
-            const user = result.user;
-            userUpdateProfile(userInfo.name, userInfo.url)
-            .then(()=>{})
-            .catch(error=>{
-                console.log(error.message);
+            .then(result => {
+                const user = result.user;
+                setErrorInfo("")
+                userUpdateProfile(userInfo.name, userInfo.url)
+                    .then(() => {
+                        setErrorInfo("")
+                     })
+                    .catch(error => {
+                        setErrorInfo({ ...errorInfo, updateProfile: error.message });
+                    })
+                console.log(user);
             })
-            console.log(user);
-        })
-        .catch(error=>{
-            setError(error.message)
-        })
+            .catch(error => {
+                console.log(error.message);
+                setErrorInfo({ ...errorInfo, registerError: error.message })
+            })
     }
     return (
         <div>
@@ -47,28 +51,30 @@ const Register = () => {
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit} className="card-body">
                             <div className="form-control">
+                                <h1 className='text-red-500'>{errorInfo.registerError}</h1>
+                                <h1 className='text-red-500'>{errorInfo.updateProfile}</h1>
                                 <label className="label">
-                                    <span className="label-text">Name</span>
+                                    <span className="label-text">Full Name</span>
                                 </label>
-                                <input type="text" placeholder="name" className="input input-bordered" value={userInfo.name} onChange={handleName} required/>
+                                <input type="text" placeholder="full-name" className="input input-bordered" value={userInfo.name} onChange={handleName} required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Photo URL</span>
                                 </label>
-                                <input type="text" placeholder="url" className="input input-bordered" value={userInfo.url} onChange={handleURL} required/>
+                                <input type="text" placeholder="url" className="input input-bordered" value={userInfo.url} onChange={handleURL} required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" placeholder="email" className="input input-bordered" value={userInfo.email} onChange={handleEmail} required/>
+                                <input type="email" placeholder="email" className="input input-bordered" value={userInfo.email} onChange={handleEmail} required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" placeholder="password" className="input input-bordered" value={userInfo.password} onChange={handlePassword} required/>
+                                <input type="password" placeholder="password" className="input input-bordered" value={userInfo.password} onChange={handlePassword} required />
                                 <label className="label">
                                     <Link href="#" className="label-text-alt link link-hover">Forgot password?</Link>
                                 </label>
