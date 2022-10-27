@@ -31,7 +31,7 @@ const Register = () => {
             .catch(error=>{
                 console.log(error.message);
             })
-            // console.log(user);
+            console.log(user);
         })
         .catch(error=>{
             setError(error.message)

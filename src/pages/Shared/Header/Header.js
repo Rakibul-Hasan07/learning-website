@@ -1,10 +1,18 @@
 import React, { useContext } from 'react';
+import { FaUserAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
 const Header = () => {
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
     // console.log(user.photoURL);
+    const handleLogout = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => {
+                console.log(error.message);
+            })
+    }
     return (
         <div>
             <div className="navbar bg-pink-100">
@@ -15,12 +23,20 @@ const Header = () => {
                     <Link to='blog'>Blog</Link>
                 </div>
                 <div className="flex-none gap-3 text-xl font-bold">
-                    <Link to='/login'>Login</Link>
-                    <Link to='/register'>Register</Link>
+                    {
+                        user?.uid ? <Link onClick={handleLogout}>LogOut</Link> :
+                            <>
+                                <Link to='/login'>Login</Link>
+                                <Link to='/register'>Register</Link>
+                            </>
+                    }
                     <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img src="https://placeimg.com/80/80/people" />
+                                {
+                                    user?.photoURL ? <img src={user.photoURL} /> : <img src='https://image.shutterstock.com/shutterstock/photos/1214871721/display_1500/stock-vector-profile-photo-user-icon-1214871721.jpg' />
+                                }
+                                {/* <img src={user?.photoURL? user.photoURL : <FaUserAlt></FaUserAlt>} /> */}
                             </div>
                         </label>
                     </div>
