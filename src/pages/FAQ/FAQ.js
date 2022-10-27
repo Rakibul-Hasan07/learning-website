@@ -7,7 +7,7 @@ const FAQ = () => {
         <div>
             {
                 faqData.map(faq => <div key={faq.id}>
-                    <div className='w-[500px] mx-auto'>
+                    <div className='w-[300px] lg:w-[500px] mx-auto'>
                         <div tabIndex={0} className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box my-2">
                             <div className="collapse-title text-xl font-medium">
                                 {faq.question}

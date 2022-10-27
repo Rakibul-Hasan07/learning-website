@@ -11,7 +11,7 @@ const DetailsCard = () => {
                 <img className='w-full h-80 rounded-xl' src={image_url} alt="" />
                 <div className="card-body">
                     <h2 className="text-center font-bold text-2xl my-4">{title}</h2>
-                    <div className='flex justify-between font-bold text-xl my-3'>
+                    <div className='flex flex-col items-center justify-center lg:flex-row justify-between font-bold text-xl my-3'>
                         <small>Price: $ {price}</small>
                         <small className='flex gap-2 items-center '><FaStar></FaStar><FaStar></FaStar><FaStar></FaStar><FaStar></FaStar><FaStar></FaStar>{rating}</small>
                         <small>Students: {total_student}</small>

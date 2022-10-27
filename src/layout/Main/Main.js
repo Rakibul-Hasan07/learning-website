@@ -5,9 +5,9 @@ import LeftNav from '../../pages/Shared/LeftNav/LeftNav';
 const Main = () => {
     return (
         <div>
-            <div className='grid grid-cols-4'>
-                <div className="col-span-1"><LeftNav></LeftNav></div>
-                <div className='col-span-3'><Outlet></Outlet></div>
+            <div className='grid justify-center lg:grid-cols-4'>
+                <div className="lg:col-span-1"><LeftNav></LeftNav></div>
+                <div className='lg:col-span-3'><Outlet></Outlet></div>
             </div>
         </div>
     );

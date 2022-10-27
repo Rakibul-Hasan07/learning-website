@@ -1,11 +1,13 @@
-import React, { useContext } from 'react';
-import { FaUserAlt } from 'react-icons/fa';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
+import Switch from "react-switch";
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 
 const picture = new URL("../../../assets/favicon1.jpg", import.meta.url)
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
+    const [open, setOpen] = useState(true)
     // console.log(user.photoURL);
     const handleLogout = () => {
         logOut()
@@ -15,16 +17,24 @@ const Header = () => {
             })
     }
     return (
-        <div>
-            <div className="navbar bg-pink-100">
-                <div className="flex-1 gap-3 text-xl font-bold">
+        <div className='bg-purple-200'>
+            <div className='h-6 w-6 md:hidden' onClick={() => setOpen(!open)}>
+                {
+                    open ?
+                        <Bars3Icon></Bars3Icon> :
+                        <XMarkIcon></XMarkIcon>
+                }
+            </div>
+            <div className={`navbar md:flex justify-between w-full bg-purple-200 ${open? "hidden" : "block"}`}>
+
+                <div className="flex flex-col md:flex-row gap-3 text-xl font-bold">
                     <img className='rounded-lg h-10' src={picture} alt="" />
                     <Link to='/' className="bg-gray-200 p-2 rounded-md normal-case text-xl">ProLearners</Link>
                     <Link to='/courses'>Courses</Link>
                     <Link to='/faq'>FAQ</Link>
                     <Link to='blog'>Blog</Link>
                 </div>
-                <div className="flex-none gap-3 text-xl font-bold">
+                <div className="flex flex-col md:flex-row gap-3 text-xl font-bold">
                     {
                         user?.uid ? <Link onClick={handleLogout}>LogOut</Link> :
                             <>
@@ -32,6 +42,8 @@ const Header = () => {
                                 <Link to='/register'>Register</Link>
                             </>
                     }
+
+                    <Switch></Switch>
                     <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">

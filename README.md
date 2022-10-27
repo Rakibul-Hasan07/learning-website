@@ -19,6 +19,7 @@ Live Link here: [https://thunderous-trifle-1ba707.netlify.app/](https://thundero
 * Tailwind
 * DaisyUI
 * Firebase
+* React Switch
 
 # Getting Started with Create React App
 
