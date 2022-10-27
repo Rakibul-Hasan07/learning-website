@@ -15,6 +15,7 @@ import PrivateRoute from "./PrivateRoute";
 export const router = createBrowserRouter([
     {
         path: '/', element: <Root></Root>, errorElement:<NotFound></NotFound>, children: [
+            { path: '/', element: <Home></Home> },
             { path: '/home', element: <Home></Home> },
             {
                 path: '/courses', element: <Main></Main>, children: [

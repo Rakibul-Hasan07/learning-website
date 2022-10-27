@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../AuthProvider/AuthProvider';
 import Switch from "react-switch";
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
@@ -39,7 +39,7 @@ const Header = () => {
                 </div>
                 <div className="flex flex-col md:flex-row gap-3 text-xl font-bold">
                     {
-                        user?.uid ? <NavLink  onClick={handleLogout}>LogOut</NavLink> :
+                        user?.uid ? <NavLink onClick={handleLogout}>LogOut</NavLink> :
                             <>
                                 <NavLink to='/login'>Login</NavLink>
                                 <NavLink to='/register'>Register</NavLink>
@@ -52,8 +52,8 @@ const Header = () => {
                             <div className="w-10 rounded-full">
                                 {
                                     user?.photoURL ? <img title={user?.displayName} src={user.photoURL} /> : <img src='https://image.shutterstock.com/shutterstock/photos/1214871721/display_1500/stock-vector-profile-photo-user-icon-1214871721.jpg' />
+
                                 }
-                                {/* <img src={user?.photoURL? user.photoURL : <FaUserAlt></FaUserAlt>} /> */}
                             </div>
                         </label>
                     </div>

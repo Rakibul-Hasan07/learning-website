@@ -3,8 +3,6 @@ This is Educational Website
 
 ### Firebase
 
-Live Link here: [https://thunderous-trifle-1ba707.netlify.app/](https://thunderous-trifle-1ba707.netlify.app/)
-
 * It is single page applicaton
 * Login Register Feature and Google , GItHub singin feature
 * Some Course Card
@@ -13,13 +11,14 @@ Live Link here: [https://thunderous-trifle-1ba707.netlify.app/](https://thundero
 * Blog Routes
 * FAQ Routes
 
-# Some Framworks/ Libraries
+# Some Framworks/ Libraries/ Packages
 * Reactjs
 * React Router
 * Tailwind
 * DaisyUI
 * Firebase
 * React Switch
+* React Tostify
 
 # Getting Started with Create React App
 
