@@ -1,3 +1,25 @@
+# ProLearners
+This is Educational Website
+
+### Firebase
+
+Live Link here: [https://thunderous-trifle-1ba707.netlify.app/](https://thunderous-trifle-1ba707.netlify.app/)
+
+* It is single page applicaton
+* Login Register Feature and Google , GItHub singin feature
+* Some Course Card
+* Click to see course details
+* Get premium access
+* Blog Routes
+* FAQ Routes
+
+# Some Framworks/ Libraries
+* Reactjs
+* React Router
+* Tailwind
+* DaisyUI
+* Firebase
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

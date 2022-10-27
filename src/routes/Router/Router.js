@@ -8,12 +8,13 @@ import PremiumCourses from "../../pages/Courses/PremiumCourses/PremiumCourses";
 import FAQ from "../../pages/FAQ/FAQ";
 import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login";
+import NotFound from "../../pages/NotFound/NotFound";
 import Register from "../../pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
-        path: '/', element: <Root></Root>, children: [
+        path: '/', element: <Root></Root>, errorElement:<NotFound></NotFound>, children: [
             { path: '/', element: <Home></Home> },
             {
                 path: '/courses', element: <Main></Main>, children: [
@@ -39,8 +40,18 @@ export const router = createBrowserRouter([
             },
 
 
-            { path: '/faq', element: <FAQ></FAQ> },
-            { path: '/blog', element: <Blog></Blog> },
+            {
+                path: '/faq', element: <FAQ></FAQ>,
+                loader: () => {
+                    return fetch('http://localhost:5000/faq')
+                }
+            },
+            {
+                path: '/blog', element: <Blog></Blog>,
+                loader: () => {
+                    return fetch('http://localhost:5000/blog')
+                }
+            },
             { path: '/login', element: <Login></Login> },
             { path: '/register', element: <Register></Register> }
         ]
