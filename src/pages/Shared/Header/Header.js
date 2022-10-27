@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../AuthProvider/AuthProvider';
 
 const Header = () => {
+    const {user} = useContext(AuthContext)
+    console.log(user.photoURL);
     return (
         <div>
             <div className="navbar bg-pink-100">
